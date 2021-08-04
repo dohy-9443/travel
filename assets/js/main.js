@@ -55,3 +55,36 @@ let swiper = new Swiper(".discover__container", {
     slideShadows: true,
   },
 });
+
+// video
+const videoFile = document.querySelector("#video-file");
+const videoButton = document.querySelector("#video-button");
+const videoIcon = document.querySelector("#video-icon");
+
+function playPause() {
+  if (videoFile.paused) {
+    // play video
+    videoFile.play();
+
+    // change the icon
+    videoIcon.classList.add("ri-pause-line");
+    videoIcon.classList.remove("ri-play-line");
+  } else {
+    // Pause video
+    videoFile.pause();
+
+    // change the icon
+    videoIcon.classList.remove("ri-pause-line");
+    videoIcon.classList.add("ri-play-line");
+  }
+}
+
+videoButton.addEventListener("click", playPause);
+
+function finalVideo() {
+  // video end, icon change
+  videoIcon.classList.remove("ri-pause-line");
+  videoIcon.classList.add("ri-play-line");
+}
+
+videoFile.addEventListener("ended", finalVideo);
