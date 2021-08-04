@@ -217,6 +217,15 @@ input { outline: none; }
   right: 0;
 }
 
+.scroll-header {
+  background-color: var(--body-color);
+  box-shadow: 0 0 4px hsla(var(--hue-color), 64%, 15%, 0.15);
+}
+.scroll-header .nav__logo,
+.scroll-header .nav__toggle {
+  color: var(--title-color);
+}
+
 /* home */
 .home__img {
   position: absolute;
@@ -328,3 +337,46 @@ input { outline: none; }
 .button--link:hover {
   background: none;
 }
+
+/* about */
+.about__data {
+  text-align: center;
+}
+
+.about__container {
+  row-gap: 2.5rem;
+}
+
+.about__description {
+  margin-bottom: var(--mb-2);
+}
+
+.about__img {
+  display: flex;
+  column-gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.about__img-overlay {
+  overflow: var(--img-hidden);
+}
+
+.about__img-one {
+  width: 130px;
+}
+
+.about__img-two {
+  width: 180px;
+}
+
+.about__img-one,
+.about__img-two {
+  transition: var(--img-transition);
+}
+
+.about__img-one:hover,
+.about__img-two:hover {
+  transform: var(--img-scale);
+} 
+
