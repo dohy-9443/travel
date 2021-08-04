@@ -91,7 +91,7 @@ videoFile.addEventListener("ended", finalVideo);
 
 // show scroll top
 function scrollUp() {
-  const scrollUp = document.querySelector("#scroll-up");
+  const scrollUp = document.getElementById("scroll-up");
 
   if (this.scrollY >= 200) {
     scrollUp.classList.add("show-scroll");
@@ -128,3 +128,40 @@ function scrollActive() {
 window.addEventListener("scroll", scrollActive);
 
 // dark light theme
+const themeButton = document.querySelector("#theme-button");
+const darkTheme = "dark-theme";
+const iconTheme = "ri-sun-line";
+
+// 전에 선택한 거 (사용자가 선택한 경우)
+const selectedTheme = localStorage.getItem("selected-theme");
+const selectedIcon = localStorage.getItem("selected-icon");
+
+// 다크 모드 클래스를 유효성검사해서 인터페이스의 현재 테마를 얻는다.
+const getCurrentTheme = () => {
+  document.body.classList.contains(darkTheme) ? "dark" : "light";
+};
+const getCurrentIcon = () => {
+  themeButton.classList.contains(iconTheme) ? "ri-moon-line" : "ri-sun-line";
+};
+
+// 사용자가 이전에 선택했는지 확인
+if (selectedTheme) {
+  // 유효성 검사가 완료되면 다크모드를 활성화 또는 비활성화했는지 여부
+  document.body.classList[selectedTheme === "dark" ? "add" : "remove"](
+    darkTheme
+  );
+  themeButton.classList[selectedIcon === "ri-moon-line" ? "add" : "remove"](
+    iconTheme
+  );
+}
+
+// 버튼을 수동으로
+themeButton.addEventListener("click", () => {
+  // 다크모드 add / remove
+  document.body.classList.toggle(darkTheme);
+  themeButton.classList.toggle(iconTheme);
+
+  // 사용자가 선택한 테마를 현재 아이콘을 저장
+  localStorage.setItem("selected-theme", getCurrentTheme());
+  localStorage.setItem("selected-icon", getCurrentIcon());
+});
